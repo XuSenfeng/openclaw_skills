@@ -24,15 +24,26 @@ Reconnect the USB cable.
 ```
 分为leader和follower两个机械臂, 需要查询两个机械臂的端口号, 以便于后续的动作录制和播放
 
+
+## 重要提示：端口号获取
+
+**在进行任何需要指定端口的操作（如动作录制、播放、跟随等）前，请务必先通过 `lerobot-find-port` 查询并确认机械臂的端口号！**
+
+如未先查询端口，后续命令可能会失败或找不到设备。
+
+查询方法见上文“查询端口”章节。
+
+---
+
 ## 动作播放
 
-失败的话重复运行命令几次，直到成功为止。这里的./so101_try_002 是一个数据集路径，里面包含了机械臂的动作数据，运行这个命令会让机械臂按照数据集中的动作进行点头。不同的机械臂的动作对应的数据集在文件assets/action.json里面, 查询这个文件后再执行命令
+失败的话重复运行命令几次，直到成功为止。这里的 ./so101_try_002 是一个数据集路径，里面包含了机械臂的动作数据，运行这个命令会让机械臂按照数据集中的动作进行点头。不同的机械臂的动作对应的数据集在文件 assets/action.json 里面, 查询这个文件后再执行命令。
 
-控制机械臂点头, 直接运行一下命令即可：
+控制机械臂点头, 直接运行以下命令即可：
 ```bash
 cd /Users/$USER/.openclaw/skills/lerobot/scripts && ./play_action.sh ./so101_try_002
 
-# 指定 follower 端口
+# 指定 follower 端口（请用 lerobot-find-port 查询实际端口号）
 cd /Users/$USER/.openclaw/skills/lerobot/scripts && ./play_action.sh ./so101_try_002 /dev/tty.usbmodemXXXX
 ```
 
